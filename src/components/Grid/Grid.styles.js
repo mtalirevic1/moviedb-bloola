@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   align-items: center;
   
   h1 {
-    color: var(--darkGrey);
+    color: var(--darkBlue);
     text-align: center;
     font-size: var(--fontVeryBig);
     @media screen and(max-width: 768px){

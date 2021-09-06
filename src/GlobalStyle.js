@@ -5,9 +5,9 @@ export const GlobalStyle = createGlobalStyle`
     --maxWidth: 1280px;
     --white: #fff;
     --black: #000;
-    --lightGrey: #8eaebd;
-    --medGrey: #30415d;
-    --darkGrey: #031424;
+    --lightBlue: #8eaebd;
+    --medBlue: #30415d;
+    --darkBlue: #031424;
     --fontVeryBig: 2.5rem;
     --fontBig: 1.5rem;
     --fontMed: 1.2rem;
@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background-color: var(--lightGrey);
+    background-color: var(--lightBlue);
 
     h1 {
       font-size: 2rem;

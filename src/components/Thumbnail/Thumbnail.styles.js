@@ -37,8 +37,7 @@ export const TitleBox = styled.div`
   height: fit-content;
   padding: 20px;
   font-size: var(--fontBig);
-  background: var(--darkGrey);
+  background: var(--darkBlue);
   text-align: center;
   color: var(--white);
 `;
-

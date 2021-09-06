@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.button`
   display: block;
-  background: var(--darkGrey);
+  background: var(--darkBlue);
   width: 25%;
   min-width: 200px;
   height: 60px;
@@ -20,8 +20,8 @@ export const Wrapper = styled.button`
 `;
 
 export const ActiveWrapper = styled(Wrapper)`
-  background: var(--medGrey);
-  color: var(--darkGrey);
+  background: var(--medBlue);
+  color: var(--darkBlue);
   :hover{
     opacity: 1;
   }

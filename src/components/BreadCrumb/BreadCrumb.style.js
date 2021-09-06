@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: 70px;
-  background: var(--medGrey);
+  background: var(--medBlue);
   color: var(--white);
 `;
 
