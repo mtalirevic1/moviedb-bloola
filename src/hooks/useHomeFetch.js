@@ -49,6 +49,7 @@ export const useHomeFetch = (fetchingMovies, searchTerm) => {
         fetchMovies(1, search);
     }, [searchTerm]);
 
+    //Render when switching from movies to series
     useEffect(() => {
         setState(initialState);
         fetchMovies(1, searchTerm);

@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 //Styles
 import {Image, TitleBox, Wrapper} from "./Thumbnail.styles";
 
+//Displays the movie/series image and title
 const Thumbnail = ({image, movieId, movieName, clickable}) => (
     <Wrapper>
         {clickable ? (

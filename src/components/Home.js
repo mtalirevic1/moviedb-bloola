@@ -19,6 +19,8 @@ const Home = ({fetchingMovies, setFetchingMovies, searchTerm, setSearchTerm}) =>
 
     if (error) return <div>Something went wrong...</div>;
 
+    //Search will only happen after 3 letters are written, until then only the top movies/series are shown
+    //fetchingMovies determines if we are searching for movies or series
     return (
         <>
             {state.results[0] ?

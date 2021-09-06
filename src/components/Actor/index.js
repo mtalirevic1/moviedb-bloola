@@ -2,6 +2,7 @@ import React from "react";
 //Styles
 import {Wrapper, Image} from "./Actor.styles";
 
+//Shows an actor of a movie/series
 const Actor = ({name, character, imageUrl}) => (
   <Wrapper>
       <Image src={imageUrl} alt='actor-thumb' />
