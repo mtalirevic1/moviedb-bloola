@@ -4,8 +4,8 @@ import searchIcon from "../../images/search-icon.svg"
 //Styles
 import {Wrapper, Content} from "./SearchBar.styles";
 
-const SearchBar = ({setSearchTerm, fm}) => {
-    const[state, setState] = useState('');
+const SearchBar = ({setSearchTerm, fm, searchTerm}) => {
+    const[state, setState] = useState(searchTerm);
     const initial = useRef(true);
 
     useEffect(() =>{

@@ -11,9 +11,8 @@ import MovieInfoBar from "./MovieInfoBar";
 import Actor from "./Actor";
 //Hook
 import {useMovieFetch} from "../hooks/useMovieFetch";
-import {} from "./Home"
 //Image
-import NoImage from '../images/no_image.jpg';
+import NoImage from '../images/no_image.png';
 
 const Movie = ({fetchingMovies: fm}) => {
     const {movieId} = useParams();

@@ -4,7 +4,7 @@ import Thumbnail from "../Thumbnail";
 //Config
 import {IMAGE_BASE_URL, POSTER_SIZE} from "../../config";
 //Image
-import NoImage from "../../images/no_image.jpg"
+import NoImage from "../../images/no_image.png"
 //Styles
 import {Wrapper, Content, Text} from "./MovieInfo.styles";
 

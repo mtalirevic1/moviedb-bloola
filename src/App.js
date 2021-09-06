@@ -8,22 +8,28 @@ import Movie from "./components/Movie";
 import NotFound from "./components/NotFound";
 
 //Styles
-import { GlobalStyle } from './GlobalStyle';
+import {GlobalStyle} from './GlobalStyle';
 
 
 const App = () => {
 
     const [fetchingMovies, setFetchingMovies] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
 
     return (
         <Router>
             <Header/>
             <Routes>
-                <Route path='/' element={<Home fetchingMovies={fetchingMovies} setFetchingMovies={setFetchingMovies} />} />
-                <Route path='/:movieId' element={<Movie fetchingMovies={fetchingMovies} />} />
-                <Route path='/*' element={<NotFound />} />
+                <Route path='/' element={<Home fetchingMovies={fetchingMovies}
+                                               setFetchingMovies={setFetchingMovies}
+                                               searchTerm={searchTerm}
+                                               setSearchTerm={setSearchTerm}
+                />}
+                />
+                <Route path='/:movieId' element={<Movie fetchingMovies={fetchingMovies}/>}/>
+                <Route path='/*' element={<NotFound/>}/>
             </Routes>
-            <GlobalStyle />
+            <GlobalStyle/>
         </Router>
     );
 }

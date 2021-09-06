@@ -18,3 +18,12 @@ export const Wrapper = styled.button`
     opacity: 0.8;
   }
 `;
+
+export const ActiveWrapper = styled(Wrapper)`
+  background: var(--medGrey);
+  color: var(--darkGrey);
+  :hover{
+    opacity: 1;
+  }
+  cursor: auto;
+`;

@@ -9,8 +9,8 @@ const initialState = {
     total_results: 0
 };
 
-export const useHomeFetch = (fetchingMovies) => {
-    const [searchTerm, setSearchTerm] = useState('');
+export const useHomeFetch = (fetchingMovies, searchTerm) => {
+
     const [state, setState] = useState(initialState);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -21,6 +21,7 @@ export const useHomeFetch = (fetchingMovies) => {
             setError(false);
             setLoading(true);
 
+            //fetchingMovies decides if we search for movies or series
             let movies;
             if (searchTerm) {
                 movies = fetchingMovies ? await API.fetchMovies(searchTerm, page) : await API.fetchShows(searchTerm, page);
@@ -60,5 +61,5 @@ export const useHomeFetch = (fetchingMovies) => {
         setIsLoadingMore(false);
     }, [isLoadingMore, searchTerm, state.page]);
 
-    return {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore, fetchingMovies};
+    return {state, loading, error, setIsLoadingMore};
 };

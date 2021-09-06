@@ -11,13 +11,13 @@ import Button from "./Button";
 import {useHomeFetch} from "../hooks/useHomeFetch";
 
 //Image
-import NoImage from "../images/no_image.jpg";
+import NoImage from "../images/no_image.png";
 
-const Home = ({fetchingMovies, setFetchingMovies}) => {
+const Home = ({fetchingMovies, setFetchingMovies, searchTerm, setSearchTerm}) => {
 
-    const {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore} = useHomeFetch(fetchingMovies);
+    const {state, loading, error, setIsLoadingMore} = useHomeFetch(fetchingMovies, searchTerm);
 
-    if (error) return <div>Something went wrong ...</div>;
+    if (error) return <div>Something went wrong...</div>;
 
     return (
         <>
@@ -30,9 +30,9 @@ const Home = ({fetchingMovies, setFetchingMovies}) => {
                     />
                 ) : null
             }
-            <SearchBar setSearchTerm={setSearchTerm} fm={fetchingMovies}/>
-            <Button text='Movies' callback={() => setFetchingMovies(true)}/>
-            <Button text='Series' callback={() => setFetchingMovies(false)}/>
+            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} fm={fetchingMovies}/>
+            <Button pressed={fetchingMovies} text='Movies' callback={() => setFetchingMovies(true)}/>
+            <Button pressed={!fetchingMovies} text='Series' callback={() => setFetchingMovies(false)}/>
             <Grid
                 header={state.results.length > 0 ?
                     (searchTerm ?

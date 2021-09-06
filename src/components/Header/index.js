@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import RMDBLogo from '../../images/react-movie-logo.svg'
+import RMDBLogo from '../../images/bloolaLogo.png'
 
 import {Wrapper, Content, LogoImg} from "./Header.styles";
 
