@@ -43,9 +43,15 @@ export const useHomeFetch = (fetchingMovies) => {
 
     //Initial render and search
     useEffect(() => {
+        const search = searchTerm && searchTerm.length>2 ? searchTerm : '';
+        setState(initialState);
+        fetchMovies(1, search);
+    }, [searchTerm]);
+
+    useEffect(() => {
         setState(initialState);
         fetchMovies(1, searchTerm);
-    }, [searchTerm, fetchingMovies]);
+    }, [fetchingMovies]);
 
     //Load More
     useEffect(() => {

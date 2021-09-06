@@ -22,7 +22,7 @@ const Home = ({fetchingMovies, setFetchingMovies}) => {
     return (
         <>
             {state.results[0] ?
-                (!searchTerm &&
+                ((!searchTerm || (searchTerm && searchTerm.length<3)) &&
                     <BannerImage
                         image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
                         title={state.results[0].original_title}
@@ -30,13 +30,15 @@ const Home = ({fetchingMovies, setFetchingMovies}) => {
                     />
                 ) : null
             }
-            <SearchBar setSearchTerm={setSearchTerm}/>
-            <Button text='Movies' callback={()=> setFetchingMovies(true)}/>
-            <Button text='Series' callback={()=> setFetchingMovies(false)}/>
+            <SearchBar setSearchTerm={setSearchTerm} fm={fetchingMovies}/>
+            <Button text='Movies' callback={() => setFetchingMovies(true)}/>
+            <Button text='Series' callback={() => setFetchingMovies(false)}/>
             <Grid
                 header={state.results.length > 0 ?
                     (searchTerm ?
-                        `Search results for: "${searchTerm}"`
+                        (searchTerm.length < 3 ?
+                            `Top 30 ${fetchingMovies ? 'movies' : 'series'}` :
+                            `Search results for: "${searchTerm}"`)
                         : `Top 30 ${fetchingMovies ? 'movies' : 'series'}`)
                     : (loading) ?
                         ''
