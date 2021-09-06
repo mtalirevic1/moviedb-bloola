@@ -8,7 +8,7 @@ import NoImage from "../../images/no_image.jpg"
 //Styles
 import {Wrapper, Content, Text} from "./MovieInfo.styles";
 
-const MovieInfo = ({movie}) => (
+const MovieInfo = ({movie, fm}) => (
     <Wrapper backdrop={movie.backdrop_path}>
         <Content>
             <Thumbnail
@@ -21,7 +21,7 @@ const MovieInfo = ({movie}) => (
                 alt="movie-thumbnail"
             />
             <Text>
-                <h1>{movie.title}</h1>
+                <h1>{fm ? movie.title : movie.name}</h1>
                 <h3>PLOT</h3>
                 <p>{movie.overview}</p>
                 <div className="rating-directors">
@@ -30,8 +30,8 @@ const MovieInfo = ({movie}) => (
                         <div className="score">{movie.vote_average}</div>
                     </div>
                     <div className="director">
-                        <h3>DIRECTOR{movie.directors.length > 1 ? 'S' : ''}</h3>
-                        {movie.directors.map(director => (
+                        {fm && (<h3>DIRECTOR{movie.directors.length > 1 ? 'S' : ''}</h3>)}
+                        {fm && movie.directors.map(director => (
                             <p key={director.credit_id}>{director.name}</p>
                         ))}
                     </div>

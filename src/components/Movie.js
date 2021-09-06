@@ -11,26 +11,26 @@ import MovieInfoBar from "./MovieInfoBar";
 import Actor from "./Actor";
 //Hook
 import {useMovieFetch} from "../hooks/useMovieFetch";
+import {} from "./Home"
 //Image
 import NoImage from '../images/no_image.jpg';
 
-const Movie = () => {
+const Movie = ({fetchingMovies: fm}) => {
     const {movieId} = useParams();
-
-    const {state: movie, loading, error} = useMovieFetch(movieId);
+    const {state: movie, loading, error} = useMovieFetch(movieId, fm);
 
     if (loading) return <SpinCircle/>
     if (error) return <div>Something went wrong...</div>;
 
     return (
         <>
-            <BreadCrumb movieTitle={movie.original_title}/>
-            <MovieInfo movie={movie}/>
-            <MovieInfoBar
+            <BreadCrumb movieTitle={fm ? movie.original_title : movie.name}/>
+            <MovieInfo movie={movie} fm={fm}/>
+            {fm && (<MovieInfoBar
                 time={movie.runtime}
                 budget={movie.budget}
                 revenue={movie.revenue}
-            />
+            />)}
             <Grid header='Actors'>
                 {movie.actors.map(actor => (
                     <Actor

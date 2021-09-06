@@ -9,7 +9,7 @@ const initialState = {
     total_results: 0
 };
 
-export const useHomeFetch = () => {
+export const useHomeFetch = (fetchingMovies) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [state, setState] = useState(initialState);
     const [loading, setLoading] = useState(false);
@@ -23,14 +23,12 @@ export const useHomeFetch = () => {
 
             let movies;
             if (searchTerm) {
-                movies = await API.fetchMovies(searchTerm, page);
+                movies = fetchingMovies ? await API.fetchMovies(searchTerm, page) : await API.fetchShows(searchTerm, page);
             } else {
-                movies = await API.fetchMovies(searchTerm, 1);
-                const movies2 = await API.fetchMovies(searchTerm, 2);
+                movies = fetchingMovies ? await API.fetchMovies(searchTerm, 1) : await API.fetchShows(searchTerm, 1);
+                const movies2 = fetchingMovies ? await API.fetchMovies(searchTerm, 2) : await API.fetchShows(searchTerm, 2);
                 movies.results.push(...movies2.results.filter((movie, index) => index < 10));
             }
-
-
             setState(prev => ({
                 ...movies,
                 results:
@@ -47,7 +45,7 @@ export const useHomeFetch = () => {
     useEffect(() => {
         setState(initialState);
         fetchMovies(1, searchTerm);
-    }, [searchTerm]);
+    }, [searchTerm, fetchingMovies]);
 
     //Load More
     useEffect(() => {
@@ -56,5 +54,5 @@ export const useHomeFetch = () => {
         setIsLoadingMore(false);
     }, [isLoadingMore, searchTerm, state.page]);
 
-    return {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore};
+    return {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore, fetchingMovies};
 };

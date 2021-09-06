@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import API from "../API";
 
-export const useMovieFetch = movieId => {
+export const useMovieFetch = (movieId, isMovie) => {
     const [state, setState] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -11,9 +11,9 @@ export const useMovieFetch = movieId => {
             try {
                 setLoading(true);
                 setError(false);
-
-                const movie = await API.fetchMovie(movieId);
-                const credits = await API.fetchCredits(movieId);
+                console.log(isMovie);
+                const movie = isMovie ? await API.fetchMovie(movieId) : await API.fetchShow(movieId);
+                const credits = isMovie ? await API.fetchMovieCredits(movieId) : await API.fetchShowCredits(movieId);
                 //Get directors
                 const directors = credits.crew.filter(
                     member => member.job === 'Director'
@@ -31,7 +31,7 @@ export const useMovieFetch = movieId => {
             }
         }
         fetchMovie();
-    }, [movieId]);
+    }, [movieId, isMovie]);
 
     return {state, loading, error};
 }

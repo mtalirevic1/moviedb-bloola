@@ -3,8 +3,11 @@
 const API_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
 
-const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
-const TOP_RATED_BASE_URL = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=en-US`;
+const MOVIE_SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
+const MOVIE_TOP_RATED_BASE_URL = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=en-US`;
+
+const TV_SEARCH_BASE_URL = `${API_URL}search/tv?api_key=${API_KEY}&language=en-US&query=`;
+const TV_TOP_RATED_BASE_URL = `${API_URL}tv/top_rated?api_key=${API_KEY}&language=en-US`;
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/';
 // Sizes: w300, w780, w1280, original
@@ -13,8 +16,10 @@ const BACKDROP_SIZE = 'w1280';
 const POSTER_SIZE = 'w780';
 
 export {
-    SEARCH_BASE_URL,
-    TOP_RATED_BASE_URL,
+    MOVIE_SEARCH_BASE_URL,
+    MOVIE_TOP_RATED_BASE_URL,
+    TV_SEARCH_BASE_URL,
+    TV_TOP_RATED_BASE_URL,
     API_URL,
     API_KEY,
     IMAGE_BASE_URL,

@@ -7,16 +7,15 @@ import Thumbnail from "./Thumbnail";
 import SpinCircle from "./SpinCircle";
 import SearchBar from "./SearchBar"
 import Button from "./Button";
-import SelectionBar from './SelectionBar'
 //Hook
 import {useHomeFetch} from "../hooks/useHomeFetch";
 
 //Image
 import NoImage from "../images/no_image.jpg";
 
-const Home = () => {
+const Home = ({fetchingMovies, setFetchingMovies}) => {
 
-    const {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore} = useHomeFetch();
+    const {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore} = useHomeFetch(fetchingMovies);
 
     if (error) return <div>Something went wrong ...</div>;
 
@@ -32,12 +31,13 @@ const Home = () => {
                 ) : null
             }
             <SearchBar setSearchTerm={setSearchTerm}/>
-            <SelectionBar></SelectionBar>
+            <Button text='Movies' callback={()=> setFetchingMovies(true)}/>
+            <Button text='Series' callback={()=> setFetchingMovies(false)}/>
             <Grid
                 header={state.results.length > 0 ?
                     (searchTerm ?
                         `Search results for: "${searchTerm}"`
-                        : 'Top 30 movies')
+                        : `Top 30 ${fetchingMovies ? 'movies' : 'series'}`)
                     : (loading) ?
                         ''
                         : 'No results'}>
@@ -51,7 +51,7 @@ const Home = () => {
                                 : NoImage
                         }
                         movieId={movie.id}
-                        movieName={movie.title}
+                        movieName={fetchingMovies ? movie.title : movie.name}
                     />
                 ))}
             </Grid>
