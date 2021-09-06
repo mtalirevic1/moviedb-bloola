@@ -5,9 +5,9 @@ export const GlobalStyle = createGlobalStyle`
     --maxWidth: 1280px;
     --white: #fff;
     --black: #000;
-    --lightGrey: #eee;
-    --medGrey: #353535;
-    --darkGrey: #1c1c1c;
+    --lightGrey: #8eaebd;
+    --medGrey: #30415d;
+    --darkGrey: #031424;
     --fontVeryBig: 2.5rem;
     --fontBig: 1.5rem;
     --fontMed: 1.2rem;
@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    background-color: var(--lightGrey);
 
     h1 {
       font-size: 2rem;
@@ -37,6 +38,10 @@ export const GlobalStyle = createGlobalStyle`
     p {
       font-size: 1rem;
       color: var(--white);
+    }
+    
+    a {
+      text-decoration: none;
     }
   }
 `
