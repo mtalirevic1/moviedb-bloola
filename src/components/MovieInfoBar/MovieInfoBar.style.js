@@ -17,13 +17,13 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: justify;
+    text-align: center;
     text-justify: inter-word;
     background: var(--medGrey);
     border-radius: 20px;
     margin: 0 20px;
     flex: 1;
-    
+    padding: 10px;
     :first-child{
       margin-left: 0;
     }

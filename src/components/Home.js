@@ -25,8 +25,8 @@ const Home = ({fetchingMovies, setFetchingMovies, searchTerm, setSearchTerm}) =>
                 ((!searchTerm || (searchTerm && searchTerm.length<3)) &&
                     <BannerImage
                         image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
-                        title={state.results[0].original_title}
-                        text={state.results[0].overview}
+                        title={fetchingMovies ? state.results[0].original_title : state.results[0].name}
+                        isMovie={fetchingMovies}
                     />
                 ) : null
             }

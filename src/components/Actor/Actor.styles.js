@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   border-radius: 20px;
   padding: 5px;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 15px;
+  }
   
   h3 {
     margin: 10px 0 0 0;
