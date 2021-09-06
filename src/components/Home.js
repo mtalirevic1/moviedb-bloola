@@ -7,7 +7,7 @@ import Thumbnail from "./Thumbnail";
 import SpinCircle from "./SpinCircle";
 import SearchBar from "./SearchBar"
 import Button from "./Button";
-
+import SelectionBar from './SelectionBar'
 //Hook
 import {useHomeFetch} from "../hooks/useHomeFetch";
 
@@ -32,6 +32,7 @@ const Home = () => {
                 ) : null
             }
             <SearchBar setSearchTerm={setSearchTerm}/>
+            <SelectionBar></SelectionBar>
             <Grid
                 header={state.results.length > 0 ?
                     (searchTerm ?
